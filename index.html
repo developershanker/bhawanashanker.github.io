@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhawana Shanker — React Native Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#0a0a0f;
+--surface:#13131a;
+--surface2:#1c1c26;
+--accent:#7c6bff;
+--accent2:#00d4aa;
+--text:#f0eeff;
+--muted:#8884a8;
+--border:#2a2a3a;
+}
+body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;overflow-x:hidden}
+.noise{position:fixed;inset:0;opacity:0.03;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");z-index:9999}
+.glow{position:fixed;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(124,107,255,0.08) 0%,transparent 70%);top:-200px;right:-200px;pointer-events:none}
+.glow2{position:fixed;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(0,212,170,0.06) 0%,transparent 70%);bottom:100px;left:-100px;pointer-events:none}
+
+nav{display:flex;justify-content:space-between;align-items:center;padding:2rem 4rem;position:sticky;top:0;z-index:100;background:rgba(10,10,15,0.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.logo{font-size:1.1rem;font-weight:800;letter-spacing:-0.02em}
+.logo span{color:var(--accent)}
+nav a{color:var(--muted);text-decoration:none;font-size:0.85rem;font-family:'DM Mono',monospace;transition:color 0.2s}
+nav a:hover{color:var(--text)}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-cta{background:var(--accent);color:white;padding:0.5rem 1.2rem;border-radius:6px;font-size:0.85rem;font-weight:700;text-decoration:none;transition:opacity 0.2s}
+.nav-cta:hover{opacity:0.85;color:white}
+
+.hero{min-height:90vh;display:flex;align-items:center;padding:4rem 4rem;position:relative}
+.hero-content{max-width:700px}
+.hero-tag{font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--accent2);letter-spacing:0.1em;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.5rem}
+.hero-tag::before{content:'';display:inline-block;width:20px;height:1px;background:var(--accent2)}
+h1{font-size:clamp(3rem,6vw,5.5rem);font-weight:800;line-height:1.0;letter-spacing:-0.04em;margin-bottom:1.5rem}
+h1 .line2{color:var(--accent)}
+.hero-desc{font-size:1.1rem;color:var(--muted);line-height:1.7;max-width:520px;margin-bottom:2.5rem;font-weight:400}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:white;padding:0.85rem 2rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.95rem;transition:transform 0.2s,opacity 0.2s}
+.btn-primary:hover{transform:translateY(-2px);opacity:0.9}
+.btn-outline{border:1px solid var(--border);color:var(--text);padding:0.85rem 2rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.95rem;transition:border-color 0.2s,background 0.2s}
+.btn-outline:hover{border-color:var(--accent);background:rgba(124,107,255,0.08)}
+.hero-stats{display:flex;gap:3rem;margin-top:4rem;padding-top:3rem;border-top:1px solid var(--border)}
+.stat-num{font-size:2.2rem;font-weight:800;letter-spacing:-0.04em}
+.stat-num span{color:var(--accent)}
+.stat-label{font-size:0.8rem;color:var(--muted);font-family:'DM Mono',monospace;margin-top:0.2rem}
+.hero-img{position:absolute;right:4rem;top:50%;transform:translateY(-50%);width:340px;height:340px;border-radius:24px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.avatar-placeholder{width:100%;height:100%;background:linear-gradient(135deg,var(--surface2) 0%,rgba(124,107,255,0.15) 100%);display:flex;align-items:center;justify-content:center;font-size:5rem;font-weight:800;color:var(--accent);letter-spacing:-0.05em}
+
+section{padding:5rem 4rem}
+.section-tag{font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1rem}
+.section-title{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:3rem}
+
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0.75rem}
+.skill-pill{background:var(--surface);border:1px solid var(--border);padding:0.7rem 1rem;border-radius:8px;font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--muted);transition:all 0.2s;cursor:default}
+.skill-pill:hover{border-color:var(--accent);color:var(--text);background:rgba(124,107,255,0.08)}
+.skill-pill.highlight{border-color:rgba(124,107,255,0.4);color:var(--accent)}
+
+.exp-timeline{position:relative;padding-left:2rem}
+.exp-timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:var(--border)}
+.exp-item{position:relative;margin-bottom:3rem;padding-left:2rem}
+.exp-item::before{content:'';position:absolute;left:-2.4rem;top:8px;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--bg)}
+.exp-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;flex-wrap:wrap;gap:0.5rem}
+.exp-role{font-size:1.15rem;font-weight:700;letter-spacing:-0.02em}
+.exp-date{font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--accent2);background:rgba(0,212,170,0.08);padding:0.3rem 0.75rem;border-radius:20px;border:1px solid rgba(0,212,170,0.2)}
+.exp-company{color:var(--accent);font-size:0.9rem;margin-bottom:1rem;font-weight:700}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+.exp-bullets li{color:var(--muted);font-size:0.9rem;line-height:1.6;padding-left:1rem;position:relative}
+.exp-bullets li::before{content:'—';position:absolute;left:0;color:var(--border)}
+
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.project-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.75rem;transition:all 0.3s;cursor:default}
+.project-card:hover{border-color:var(--accent);transform:translateY(-4px);background:var(--surface2)}
+.project-tag{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent2);letter-spacing:0.1em;margin-bottom:1rem}
+.project-title{font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;letter-spacing:-0.02em}
+.project-desc{font-size:0.875rem;color:var(--muted);line-height:1.6}
+.project-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.2rem}
+.tag{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--muted);background:var(--surface2);padding:0.25rem 0.6rem;border-radius:4px;border:1px solid var(--border)}
+
+.contact-section{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:4rem;text-align:center}
+.contact-section h2{font-size:clamp(2rem,4vw,3.5rem);font-weight:800;letter-spacing:-0.04em;margin-bottom:1rem}
+.contact-section p{color:var(--muted);margin-bottom:2rem;font-size:1rem}
+.contact-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+.contact-link{display:flex;align-items:center;gap:0.5rem;border:1px solid var(--border);padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;color:var(--text);font-size:0.875rem;font-family:'DM Mono',monospace;transition:all 0.2s}
+.contact-link:hover{border-color:var(--accent);background:rgba(124,107,255,0.08)}
+
+footer{padding:2rem 4rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+footer p{font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--muted)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero-content>*{animation:fadeUp 0.6s ease forwards;opacity:0}
+.hero-tag{animation-delay:0.1s}
+h1{animation-delay:0.2s}
+.hero-desc{animation-delay:0.3s}
+.hero-btns{animation-delay:0.4s}
+.hero-stats{animation-delay:0.5s}
+.hero-img{animation:fadeUp 0.8s 0.3s ease forwards;opacity:0}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+<div class="glow"></div>
+<div class="glow2"></div>
+
+<nav>
+  <div class="logo">BS<span>.</span></div>
+  <div class="nav-links">
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact" class="nav-cta">Hire me</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Available for Senior RN roles</div>
+    <h1>Bhawana<br><span class="line2">Shanker.</span></h1>
+    <p class="hero-desc">React Native & React developer with 6+ years building scalable mobile applications in health-tech. Currently at Apollo247, India's largest healthcare platform.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Get in touch</a>
+      <a href="#experience" class="btn-outline">View work</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">6<span>+</span></div><div class="stat-label">Years exp</div></div>
+      <div><div class="stat-num">15<span>+</span></div><div class="stat-label">Modules migrated</div></div>
+      <div><div class="stat-num">35<span>%</span></div><div class="stat-label">Load time reduced</div></div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="avatar-placeholder">BS</div>
+  </div>
+</section>
+
+<section id="experience" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="section-tag">Career</div>
+  <div class="section-title">Experience</div>
+  <div class="exp-timeline">
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-role">Software Developer — React Native</div>
+        <div class="exp-date">Mar 2021 — Present</div>
+      </div>
+      <div class="exp-company">Apollo247 · Gurgaon</div>
+      <ul class="exp-bullets">
+        <li>Built Premium Calculator for Retail & Group Health Insurance — dynamic member combinations, coverage tiers, deductible logic</li>
+        <li>Led migration of 15 app modules to a centralised UI library, cutting redundant component code across the codebase</li>
+        <li>Architected CMS-driven insurance journeys via Contentful, enabling non-technical teams to configure flows without deployments</li>
+        <li>Developed end-to-end OPD and insurance purchase flows contributing to 25% improvement in conversion rates</li>
+        <li>Built diagnostic booking flow — radiology, package discovery, cart management, and checkout across device types</li>
+        <li>Resolved critical performance issues — reduced app load time by 35% via CleverTap and Firebase tracking</li>
+        <li>Contributed to Next.js SSR insurance platform — rider selection flows for Aditya Birla aggregator integration</li>
+      </ul>
+    </div>
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-role">Front-End Developer</div>
+        <div class="exp-date">Mar 2020 — Feb 2021</div>
+      </div>
+      <div class="exp-company">MyScoot [Exly] · Gurgaon</div>
+      <ul class="exp-bullets">
+        <li>Increased client engagement by 80% designing 4 template-based promotional websites</li>
+        <li>Managed React Native app for hosts to create events and manage bookings</li>
+        <li>Built creator onboarding flow enabling members to set up customised websites for selling classes and sessions</li>
+      </ul>
+    </div>
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-role">React Native Developer</div>
+        <div class="exp-date">Dec 2018 — Mar 2020</div>
+      </div>
+      <div class="exp-company">ZoopIndia · New Delhi</div>
+      <ul class="exp-bullets">
+        <li>Built ZoopIndia and ZoopIndia Restaurants mobile apps for in-train food ordering at upcoming stations</li>
+        <li>Implemented core order flow and API integrations</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-tag">Work</div>
+  <div class="section-title">Key Projects</div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-tag">Apollo247 · Insurance</div>
+      <div class="project-title">Insurance Purchase Flow</div>
+      <div class="project-desc">End-to-end OPD and insurance purchase journeys including member selection, pricing engine, and review screens. Contributed to 25% conversion improvement.</div>
+      <div class="project-tags"><span class="tag">React Native</span><span class="tag">Redux</span><span class="tag">TypeScript</span></div>
+    </div>
+    <div class="project-card">
+      <div class="project-tag">Apollo247 · Diagnostics</div>
+      <div class="project-title">Diagnostic Booking System</div>
+      <div class="project-desc">Complete radiology and lab test booking flow with package discovery, search & autocomplete, cart management, and checkout across device types.</div>
+      <div class="project-tags"><span class="tag">React Native</span><span class="tag">Contentful</span><span class="tag">Firebase</span></div>
+    </div>
+    <div class="project-card">
+      <div class="project-tag">Apollo247 · SSR</div>
+      <div class="project-title">Insurance SSR Platform</div>
+      <div class="project-desc">Rider add-on selection UI in Next.js SSR environment for Apollo's insurance platform, supporting Aditya Birla aggregator requirements.</div>
+      <div class="project-tags"><span class="tag">Next.js</span><span class="tag">SSR</span><span class="tag">TypeScript</span></div>
+    </div>
+    <div class="project-card">
+      <div class="project-tag">Apollo247 · Architecture</div>
+      <div class="project-title">UI Library Migration</div>
+      <div class="project-desc">Led migration of 15 app modules to a centralised UI library, improving code reusability and reducing redundant component code across the product.</div>
+      <div class="project-tags"><span class="tag">React Native</span><span class="tag">Architecture</span><span class="tag">SCSS</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="section-tag">Stack</div>
+  <div class="section-title">Skills</div>
+  <div class="skills-grid">
+    <div class="skill-pill highlight">React Native</div>
+    <div class="skill-pill highlight">React</div>
+    <div class="skill-pill highlight">TypeScript</div>
+    <div class="skill-pill highlight">Redux</div>
+    <div class="skill-pill highlight">Next.js</div>
+    <div class="skill-pill">JavaScript</div>
+    <div class="skill-pill">Contentful</div>
+    <div class="skill-pill">SCSS / CSS</div>
+    <div class="skill-pill">Firebase</div>
+    <div class="skill-pill">CleverTap</div>
+    <div class="skill-pill">DataDog</div>
+    <div class="skill-pill">OTEL</div>
+    <div class="skill-pill">Jenkins</div>
+    <div class="skill-pill">GitLab</div>
+    <div class="skill-pill">Jira</div>
+    <div class="skill-pill">Postman</div>
+    <div class="skill-pill">Android Studio</div>
+    <div class="skill-pill">Reactotron</div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-section">
+    <div class="section-tag" style="text-align:center;display:block">Let's connect</div>
+    <h2>Open to Senior<br>React Native roles</h2>
+    <p>Based in Gurgaon, Haryana. Available for hybrid and remote opportunities.</p>
+    <div class="contact-links">
+      <a href="mailto:bhawanashanker22dec@gmail.com" class="contact-link">✉ bhawanashanker22dec@gmail.com</a>
+      <a href="https://www.linkedin.com/in/bhawanashanker" class="contact-link" target="_blank">in LinkedIn</a>
+      <a href="tel:8319098165" class="contact-link">📞 8319098165</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Bhawana Shanker</p>
+  <p>React Native & React Developer · Gurgaon, India</p>
+</footer>
+</body>
+</html>
