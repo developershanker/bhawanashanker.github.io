@@ -55,6 +55,25 @@ h1 .line2{color:var(--accent)}
 .contact-avatar{width:96px;height:96px;border-radius:50%;overflow:hidden;border:2px solid var(--border);margin:0 auto 1.5rem;flex-shrink:0}
 .contact-avatar img{width:100%;height:100%;object-fit:cover;object-position:center 15%}
 
+/* Terminal */
+.hero-terminal{width:420px;flex-shrink:0;background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.5);animation:fadeUp 0.8s 0.25s ease forwards;opacity:0}
+.terminal-bar{display:flex;align-items:center;gap:0.5rem;padding:0.75rem 1rem;background:var(--surface2);border-bottom:1px solid var(--border)}
+.t-dot{width:11px;height:11px;border-radius:50%}
+.t-dot.red{background:#ff5f57}.t-dot.yellow{background:#febc2e}.t-dot.green{background:#28c840}
+.terminal-title{font-family:var(--font-mono);font-size:0.7rem;color:var(--muted);margin-left:auto;margin-right:auto;padding-right:2rem}
+.terminal-body{padding:1.25rem 1.4rem;font-family:var(--font-mono);font-size:0.78rem;line-height:1.85;height:340px;overflow:hidden;position:relative}
+.terminal-body::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,var(--surface));pointer-events:none}
+.t-line{display:flex;gap:0.5rem;opacity:0;animation:lineIn 0.3s ease forwards}
+.t-prompt{color:var(--accent);user-select:none}
+.t-cmd{color:var(--text)}
+.t-out{color:var(--muted);padding-left:1.1rem}
+.t-out.green{color:var(--accent2)}
+.t-out.purple{color:var(--accent)}
+.t-out.dim{color:#555}
+.t-cursor{display:inline-block;width:8px;height:14px;background:var(--accent2);vertical-align:middle;animation:blink 1s step-end infinite;margin-left:2px}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes lineIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+
 .journey-section{padding:5rem 4rem;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .journey-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
 .journey-step{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:1.75rem;position:relative;transition:border-color 0.3s}
@@ -119,6 +138,7 @@ footer p{font-family:var(--font-mono);font-size:0.72rem;color:var(--muted)}
   .nav-links a:not(.nav-cta){display:none}
 
   .hero{flex-direction:column;align-items:flex-start;padding:2.5rem 2rem;min-height:auto;gap:2rem;padding-top:3rem}
+  .hero-terminal{display:none}
   h1{font-size:clamp(2.2rem,8vw,3.5rem)}
 
   .journey-section{padding:3.5rem 2rem}
@@ -203,7 +223,56 @@ footer p{font-family:var(--font-mono);font-size:0.72rem;color:var(--muted)}
       <div><div class="stat-num">15<span>+</span></div><div class="stat-label">Modules migrated</div></div>
     </div>
   </div>
+
+  <div class="hero-terminal">
+    <div class="terminal-bar">
+      <div class="t-dot red"></div><div class="t-dot yellow"></div><div class="t-dot green"></div>
+      <div class="terminal-title">bhawana@apollo247 ~ </div>
+    </div>
+    <div class="terminal-body" id="termBody"></div>
+  </div>
 </div>
+
+<script>
+const lines = [
+  {type:'cmd', text:'whoami'},
+  {type:'out', text:'Bhawana Shanker · Senior RN Developer', cls:'green'},
+  {type:'cmd', text:'cat experience.json'},
+  {type:'out', text:'{ years: 6, company: "Apollo247" }', cls:'purple'},
+  {type:'out', text:'  stack: ["React Native","React","TypeScript"]', cls:''},
+  {type:'out', text:'  role: "Insurance & Diagnostics UI"', cls:''},
+  {type:'out', text:'}', cls:'dim'},
+  {type:'cmd', text:'ls ./skills'},
+  {type:'out', text:'Redux  Next.js  Contentful  Firebase', cls:'green'},
+  {type:'out', text:'CleverTap  DataDog  SCSS  GitLab', cls:''},
+  {type:'cmd', text:'git log --oneline -3'},
+  {type:'out', text:'a3f9c1 feat: insurance SSR rider selection', cls:'purple'},
+  {type:'out', text:'d82b4e fix: stale closure in BackHandler', cls:''},
+  {type:'out', text:'1c7e90 perf: reduce app load time by 35%', cls:'dim'},
+  {type:'cmd', text:'npm run hire-me', cls:''},
+  {type:'out', text:'✓ Open to hybrid & remote roles in India', cls:'green'},
+];
+
+const body = document.getElementById('termBody');
+let i = 0;
+function addLine() {
+  if(i >= lines.length){ i = 0; body.innerHTML = ''; }
+  const l = lines[i++];
+  const div = document.createElement('div');
+  div.className = 't-line';
+  div.style.animationDelay = '0ms';
+  if(l.type === 'cmd'){
+    div.innerHTML = `<span class="t-prompt">❯</span><span class="t-cmd">${l.text}</span>`;
+  } else {
+    div.innerHTML = `<span class="t-out ${l.cls||''}">${l.text}</span>`;
+  }
+  body.appendChild(div);
+  body.scrollTop = body.scrollHeight;
+  const delay = l.type === 'cmd' ? 900 : 380;
+  setTimeout(addLine, delay);
+}
+setTimeout(addLine, 800);
+</script>
 
 <div class="journey-section" id="journey">
   <div class="section-tag">Career arc</div>
