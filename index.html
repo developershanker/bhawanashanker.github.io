@@ -52,9 +52,8 @@ h1 .line2{color:var(--accent)}
 .stat-num{font-family:var(--font-heading);font-size:2rem;font-weight:400;letter-spacing:-0.02em}
 .stat-num span{color:var(--accent)}
 .stat-label{font-size:0.72rem;color:var(--muted);font-family:var(--font-mono);margin-top:0.2rem}
-.hero-photo{width:clamp(240px,28vw,340px);height:clamp(290px,34vw,420px);border-radius:20px;background:var(--surface);border:1px solid var(--border);overflow:hidden;flex-shrink:0;position:relative;align-self:center}
-.photo-inner{width:100%;height:100%;background:linear-gradient(160deg,var(--surface2) 0%,rgba(124,107,255,0.12) 100%);display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:4rem;font-weight:400;color:var(--accent)}
-.photo-badge{position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);background:rgba(10,10,15,0.9);border:1px solid var(--border);border-radius:20px;padding:0.4rem 1rem;font-family:var(--font-mono);font-size:0.7rem;color:var(--accent2);white-space:nowrap;backdrop-filter:blur(10px)}
+.contact-avatar{width:96px;height:96px;border-radius:50%;overflow:hidden;border:2px solid var(--border);margin:0 auto 1.5rem;flex-shrink:0}
+.contact-avatar img{width:100%;height:100%;object-fit:cover;object-position:center 15%}
 
 .journey-section{padding:5rem 4rem;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .journey-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
@@ -119,9 +118,7 @@ footer p{font-family:var(--font-mono);font-size:0.72rem;color:var(--muted)}
   nav{padding:1.2rem 2rem}
   .nav-links a:not(.nav-cta){display:none}
 
-  .hero{flex-direction:column-reverse;align-items:flex-start;padding:2.5rem 2rem;min-height:auto;gap:2rem;padding-top:3rem}
-  .hero-photo{width:100%;height:260px;border-radius:16px;align-self:stretch}
-  .hero-photo img{object-position:center 20%}
+  .hero{flex-direction:column;align-items:flex-start;padding:2.5rem 2rem;min-height:auto;gap:2rem;padding-top:3rem}
   h1{font-size:clamp(2.2rem,8vw,3.5rem)}
 
   .journey-section{padding:3.5rem 2rem}
@@ -142,7 +139,6 @@ footer p{font-family:var(--font-mono);font-size:0.72rem;color:var(--muted)}
   .nav-links a:not(.nav-cta){display:none}
 
   .hero{padding:2rem 1.25rem;padding-top:2.5rem;gap:1.5rem}
-  .hero-photo{height:240px}
   h1{font-size:clamp(2rem,11vw,3rem);line-height:1.08}
   .hero-desc{font-size:0.9rem}
   .hero-journey{font-size:0.82rem}
@@ -206,9 +202,6 @@ footer p{font-family:var(--font-mono);font-size:0.72rem;color:var(--muted)}
       <div><div class="stat-num">6<span>+</span></div><div class="stat-label">Years exp</div></div>
       <div><div class="stat-num">15<span>+</span></div><div class="stat-label">Modules migrated</div></div>
     </div>
-  </div>
-  <div class="hero-photo">
-    <img src="profile_bhawana.jpg" style="width:100%;height:100%;object-fit:cover;object-position:center 15%">
   </div>
 </div>
 
@@ -344,6 +337,7 @@ footer p{font-family:var(--font-mono);font-size:0.72rem;color:var(--muted)}
 
 <section class="main" id="contact">
   <div class="contact-section">
+    <div class="contact-avatar"><img src="profile_bhawana.jpg" alt="Bhawana Shanker"></div>
     <div class="contact-open"><span class="avail-dot"></span>Open to work</div>
     <h2>Let's build something<br>meaningful together</h2>
     <p class="contact-note">
