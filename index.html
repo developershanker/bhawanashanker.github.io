@@ -74,6 +74,33 @@ h1 .line2{color:var(--accent)}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 @keyframes lineIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 
+/* WIP / Lab section */
+.lab-section{padding:5rem 4rem}
+.lab-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-bottom:2.5rem}
+.wip-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.75rem;transition:all 0.3s;position:relative;overflow:hidden}
+.wip-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.wip-card:hover{border-color:var(--accent);transform:translateY(-4px);background:var(--surface2)}
+.wip-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.9rem}
+.wip-badge{font-family:var(--font-mono);font-size:0.65rem;color:#f59e0b;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.25);padding:0.2rem 0.65rem;border-radius:20px;letter-spacing:0.06em;display:flex;align-items:center;gap:0.4rem}
+.wip-dot{width:5px;height:5px;border-radius:50%;background:#f59e0b;animation:pulse 1.5s infinite}
+.wip-platform{font-family:var(--font-mono);font-size:0.68rem;color:var(--accent2);letter-spacing:0.08em;margin-bottom:0.5rem}
+.wip-title{font-family:var(--font-heading);font-size:1.1rem;font-weight:400;margin-bottom:0.65rem}
+.wip-desc{font-size:0.85rem;color:var(--muted);line-height:1.65;font-family:var(--font-body);margin-bottom:1.1rem}
+.wip-progress{margin-bottom:1.1rem}
+.wip-progress-label{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:0.67rem;color:var(--muted);margin-bottom:0.4rem}
+.wip-progress-bar{height:3px;background:var(--surface2);border-radius:2px;overflow:hidden}
+.wip-progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;transition:width 1s ease}
+.wip-tags{display:flex;flex-wrap:wrap;gap:0.4rem}
+.github-banner{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.4rem 1.75rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;transition:border-color 0.2s}
+.github-banner:hover{border-color:var(--accent)}
+.github-left{display:flex;align-items:center;gap:1rem}
+.github-icon{width:38px;height:38px;border-radius:50%;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.github-icon svg{width:18px;height:18px;fill:var(--muted)}
+.github-label{font-family:var(--font-mono);font-size:0.7rem;color:var(--muted);margin-bottom:0.2rem}
+.github-url{font-family:var(--font-heading);font-size:0.95rem;color:var(--text)}
+.github-cta{font-family:var(--font-mono);font-size:0.75rem;color:var(--accent);border:1px solid rgba(124,107,255,0.3);padding:0.45rem 1rem;border-radius:6px;text-decoration:none;white-space:nowrap;transition:all 0.2s;flex-shrink:0}
+.github-cta:hover{background:rgba(124,107,255,0.1);border-color:var(--accent)}
+
 .journey-section{padding:5rem 4rem;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .journey-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
 .journey-step{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:1.75rem;position:relative;transition:border-color 0.3s}
@@ -147,6 +174,8 @@ footer p{font-family:var(--font-mono);font-size:0.72rem;color:var(--muted)}
 
   section.main{padding:3.5rem 2rem}
   .projects-grid{grid-template-columns:1fr 1fr}
+  .lab-section{padding:3.5rem 2rem}
+  .lab-grid{grid-template-columns:1fr}
 
   .contact-section{padding:2.5rem 1.5rem;border-radius:16px}
   footer{padding:1.5rem 2rem;flex-direction:column;gap:0.4rem;text-align:center}
@@ -180,6 +209,9 @@ footer p{font-family:var(--font-mono);font-size:0.72rem;color:var(--muted)}
   .exp-role{font-size:0.95rem}
 
   .projects-grid{grid-template-columns:1fr}
+  .lab-section{padding:3rem 1.25rem}
+  .github-banner{flex-direction:column;align-items:flex-start}
+  .github-cta{width:100%;text-align:center}
 
   .skills-grid{grid-template-columns:repeat(2,1fr)}
 
@@ -203,6 +235,7 @@ footer p{font-family:var(--font-mono);font-size:0.72rem;color:var(--muted)}
     <a href="#journey">Journey</a>
     <a href="#experience">Experience</a>
     <a href="#projects">Projects</a>
+    <a href="#lab">Lab</a>
     <a href="#skills">Skills</a>
     <a href="#contact" class="nav-cta">Hire me</a>
   </div>
@@ -227,7 +260,7 @@ footer p{font-family:var(--font-mono);font-size:0.72rem;color:var(--muted)}
   <div class="hero-terminal">
     <div class="terminal-bar">
       <div class="t-dot red"></div><div class="t-dot yellow"></div><div class="t-dot green"></div>
-      <div class="terminal-title">bhawana@DeveloperShanker ~ </div>
+      <div class="terminal-title">bhawana@apollo247 ~ </div>
     </div>
     <div class="terminal-body" id="termBody"></div>
   </div>
@@ -402,6 +435,45 @@ setTimeout(addLine, 800);
     <div class="skill-pill">Android Studio</div>
     <div class="skill-pill">Reactotron</div>
   </div>
+</section>
+
+<section class="lab-section" id="lab">
+  <div class="section-tag">Currently building</div>
+  <div class="section-title">Lab & Side Projects</div>
+  <div class="lab-grid">
+    <div class="wip-card">
+      <div class="wip-header">
+        <div class="wip-platform">Personal Project · React Native</div>
+        <div class="wip-badge"><span class="wip-dot"></span>In Progress</div>
+      </div>
+      <div class="wip-title">LetsCrackIt</div>
+      <div class="wip-desc">A personal health tracking app with a BMI calculator and AI-driven health advisory tailored to your profile. Planning integrations with Samsung Health, Google Fit, and other platforms to consolidate health data in one place.</div>
+      <div class="wip-progress">
+        <div class="wip-progress-label"><span>Progress</span><span>45%</span></div>
+        <div class="wip-progress-bar"><div class="wip-progress-fill" style="width:45%"></div></div>
+      </div>
+      <div class="wip-tags">
+        <span class="tag">React Native</span>
+        <span class="tag">TypeScript</span>
+        <span class="tag">Google Fit API</span>
+        <span class="tag">Samsung Health</span>
+        <span class="tag">Firebase</span>
+      </div>
+    </div>
+  </div>
+
+  <a href="https://github.com/developershanker" target="_blank" class="github-banner">
+    <div class="github-left">
+      <div class="github-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </div>
+      <div>
+        <div class="github-label">Find me on GitHub</div>
+        <div class="github-url">github.com/developershanker</div>
+      </div>
+    </div>
+    <span class="github-cta">View Profile →</span>
+  </a>
 </section>
 
 <section class="main" id="contact">
