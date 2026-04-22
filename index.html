@@ -49,6 +49,8 @@ h1 .line2{color:var(--accent)}
 .btn-primary:hover{transform:translateY(-2px);opacity:0.9}
 .btn-outline{border:1px solid var(--border);color:var(--text);padding:0.8rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;transition:border-color 0.2s,background 0.2s;font-family:var(--font-body)}
 .btn-outline:hover{border-color:var(--accent);background:rgba(124,107,255,0.08)}
+.btn-resume{border:1px solid rgba(0,212,170,0.35);color:var(--accent2);padding:0.8rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;transition:border-color 0.2s,background 0.2s;font-family:var(--font-body);display:flex;align-items:center;gap:0.4rem}
+.btn-resume:hover{border-color:var(--accent2);background:rgba(0,212,170,0.08)}
 .hero-stats{display:flex;gap:2.5rem;margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--border)}
 .stat-num{font-family:var(--font-heading);font-size:2rem;font-weight:400;letter-spacing:-0.02em}
 .stat-num span{color:var(--accent)}
@@ -193,7 +195,7 @@ footer p{font-family:var(--font-mono);font-size:0.72rem;color:var(--muted)}
   .hero-desc{font-size:0.9rem}
   .hero-journey{font-size:0.82rem}
   .hero-btns{flex-direction:column;gap:0.75rem}
-  .btn-primary,.btn-outline{text-align:center;padding:0.85rem 1.5rem}
+  .btn-primary,.btn-outline,.btn-resume{text-align:center;padding:0.85rem 1.5rem;justify-content:center}
   .hero-stats{gap:1.75rem;margin-top:2.5rem;padding-top:2rem}
   .stat-num{font-size:1.6rem}
 
@@ -251,6 +253,7 @@ footer p{font-family:var(--font-mono);font-size:0.72rem;color:var(--muted)}
     <div class="hero-btns">
       <a href="#contact" class="btn-primary">Get in touch</a>
       <a href="#experience" class="btn-outline">View work</a>
+      <a href="bhawana-shanker-2026.pdf" download class="btn-resume">↓ Download Resume</a>
     </div>
     <div class="hero-stats">
       <div><div class="stat-num">6<span>+</span></div><div class="stat-label">Years exp</div></div>
