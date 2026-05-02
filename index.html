@@ -84,8 +84,8 @@ h1 .line2{color:var(--accent)}
 .wip-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
 .wip-card:hover{border-color:var(--accent);transform:translateY(-4px);background:var(--surface2)}
 .wip-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.9rem}
-.wip-badge{font-family:var(--font-mono);font-size:0.65rem;color:#f59e0b;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.25);padding:0.2rem 0.65rem;border-radius:20px;letter-spacing:0.06em;display:flex;align-items:center;gap:0.4rem}
-.wip-dot{width:5px;height:5px;border-radius:50%;background:#f59e0b;animation:pulse 1.5s infinite}
+.wip-badge{font-family:var(--font-mono);font-size:0.65rem;color:var(--accent2);background:rgba(0,212,170,0.08);border:1px solid rgba(0,212,170,0.25);padding:0.2rem 0.65rem;border-radius:20px;letter-spacing:0.06em;display:flex;align-items:center;gap:0.4rem}
+.wip-dot{width:5px;height:5px;border-radius:50%;background:var(--accent2);animation:pulse 1.5s infinite}
 .wip-platform{font-family:var(--font-mono);font-size:0.68rem;color:var(--accent2);letter-spacing:0.08em;margin-bottom:0.5rem}
 .wip-title{font-family:var(--font-heading);font-size:1.1rem;font-weight:400;margin-bottom:0.65rem}
 .wip-desc{font-size:0.85rem;color:var(--muted);line-height:1.65;font-family:var(--font-body);margin-bottom:1.1rem}
@@ -94,6 +94,12 @@ h1 .line2{color:var(--accent)}
 .wip-progress-bar{height:3px;background:var(--surface2);border-radius:2px;overflow:hidden}
 .wip-progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;transition:width 1s ease}
 .wip-tags{display:flex;flex-wrap:wrap;gap:0.4rem}
+.wip-actions{display:flex;gap:0.75rem;margin-top:1.25rem;flex-wrap:wrap}
+.wip-btn{display:inline-flex;align-items:center;gap:0.4rem;padding:0.55rem 1rem;border-radius:8px;font-family:var(--font-mono);font-size:0.73rem;font-weight:600;text-decoration:none;transition:all 0.2s}
+.wip-btn-primary{background:var(--accent);color:white}
+.wip-btn-primary:hover{opacity:0.85;transform:translateY(-1px)}
+.wip-btn-outline{border:1px solid rgba(0,212,170,0.35);color:var(--accent2)}
+.wip-btn-outline:hover{background:rgba(0,212,170,0.08);border-color:var(--accent2)}
 .github-banner{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.4rem 1.75rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;transition:border-color 0.2s}
 .github-banner:hover{border-color:var(--accent)}
 .github-left{display:flex;align-items:center;gap:1rem}
@@ -351,7 +357,9 @@ setTimeout(addLine, 800);
       </div>
       <div class="exp-company">Apollo247 · Gurgaon</div>
       <ul class="exp-bullets">
-        <li>Built Premium Calculator for Retail & Group Health Insurance — dynamic member combinations, coverage tiers, and deductible logic</li>
+        <li>Designed a 4-stage hybrid flow bridging WebView-based policy purchase with native Razorpay Payment SDK — resolving UPI deep link failures and 3D Secure bank redirect session drops inside WebView's sandboxed context</li>
+        <li>Built and scaled a Premium Calculator for Retail & Group Health Insurance — dynamic member combinations, coverage tiers, and deductible logic</li>
+        <li>Built single-journey architecture for rendering policies across multiple insurance partners and aggregators onboarded to the platform</li>
         <li>Led migration of 15 app modules to a centralised UI library, cutting redundant component code across the codebase</li>
         <li>Architected CMS-driven insurance journeys via Contentful, enabling non-technical teams to configure flows without deployments</li>
         <li>Developed end-to-end OPD and insurance purchase flows — member selection, pricing engine, and review screens</li>
@@ -391,6 +399,12 @@ setTimeout(addLine, 800);
   <div class="section-tag">Work</div>
   <div class="section-title">Key Projects</div>
   <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-tag">Apollo247 · Payments</div>
+      <div class="project-title">WebView ↔ Native Payment Bridge</div>
+      <div class="project-desc">Architected a 4-stage hybrid flow connecting a WebView-based policy purchase journey to the native Razorpay Payment SDK — fixing UPI deep link failures and 3D Secure bank redirect session drops caused by WebView's sandboxed context.</div>
+      <div class="project-tags"><span class="tag">React Native</span><span class="tag">Razorpay SDK</span><span class="tag">WebView</span><span class="tag">UPI</span><span class="tag">TypeScript</span></div>
+    </div>
     <div class="project-card">
       <div class="project-tag">Apollo247 · Insurance</div>
       <div class="project-title">Insurance Purchase Flow</div>
@@ -450,13 +464,13 @@ setTimeout(addLine, 800);
     <div class="wip-card">
       <div class="wip-header">
         <div class="wip-platform">Personal Project · React Native</div>
-        <div class="wip-badge"><span class="wip-dot"></span>In Progress</div>
+        <div class="wip-badge"><span class="wip-dot"></span>Closed Testing</div>
       </div>
       <div class="wip-title">LetsCrackIt</div>
-      <div class="wip-desc">A personal health tracking app with a BMI calculator and AI-driven health advisory tailored to your profile. Planning integrations with Samsung Health, Google Fit, and other platforms to consolidate health data in one place.</div>
+      <div class="wip-desc">A personal health tracking app with a BMI calculator and AI-driven health advisory tailored to your profile. Integrates with Samsung Health, Google Fit, and other platforms to consolidate all your health data in one place.</div>
       <div class="wip-progress">
-        <div class="wip-progress-label"><span>Progress</span><span>45%</span></div>
-        <div class="wip-progress-bar"><div class="wip-progress-fill" style="width:45%"></div></div>
+        <div class="wip-progress-label"><span>Progress</span><span>80%</span></div>
+        <div class="wip-progress-bar"><div class="wip-progress-fill" style="width:80%"></div></div>
       </div>
       <div class="wip-tags">
         <span class="tag">React Native</span>
@@ -464,6 +478,16 @@ setTimeout(addLine, 800);
         <span class="tag">Google Fit API</span>
         <span class="tag">Samsung Health</span>
         <span class="tag">Firebase</span>
+      </div>
+      <div class="wip-actions">
+        <a href="https://play.google.com/store/apps/details?id=com.letscrackit" target="_blank" class="wip-btn wip-btn-primary">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M3.18 23.76c.3.17.64.24.99.2l12.49-12.49L12.9 7.7 3.18 23.76zM.54 1.96A1.56 1.56 0 0 0 .5 2.5v19c0 .19.02.37.07.54l.1.1L11.2 11.6v-.24L.64 1.86l-.1.1zm20.12 9.53-3.3-1.9-3.68 3.68 3.68 3.68 3.31-1.91a1.57 1.57 0 0 0 0-2.73l-.01-.02zm-18.3 12.3 11.5-11.5-3.76-3.76L2.36 23.79z"/></svg>
+          Play Store
+        </a>
+        <a href="https://play.google.com/apps/testing/com.letscrackit" target="_blank" class="wip-btn wip-btn-outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Become a Tester
+        </a>
       </div>
     </div>
   </div>
